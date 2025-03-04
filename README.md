@@ -18,7 +18,7 @@ Installation
 Clone the repository:
 
 bash
-git clone https://github.com/yourusername/electric-string-cursor-tracker.git
+git clone https://github.com/tgaikwad09/electric-string-cursor-tracker.git
 Navigate to the project directory:
 
 bash
