@@ -1,44 +1,77 @@
-# Electric strings
-Electric String Cursor Tracker
-An interactive electric string that follows the cursor in real-time, created with JavaScript, HTML, and CSS.
+# VibSense – Voice Emotion Detection & Mental Wellness App
 
-Features
-Smooth cursor tracking
+VibSense is an Android app that detects the emotional tone of a user’s voice and offers motivational content and mood-tracking analytics to support mental wellness.
 
-Customizable design
+---
 
-Cross-browser compatibility
+## Features
+1. Animated splash screen with logo.
+2. Home screen with microphone to **Record Emotion** and display detected mood (Happy, Sad, Angry, Neutral) with emoji.
+3. On-device voice-emotion detection powered by TensorFlow Lite (placeholder model).
+4. Motivational Suggestions page – quotes & YouTube links tailored to mood.
+5. Mood Tracker with daily emotion trend chart (MPAndroidChart).
+6. Firebase Authentication (anonymous) & Cloud Firestore for mood history.
+7. Bottom Navigation (Home, Motivation, Mood Tracker).
+8. Material Design, dark theme by default with optional light mode.
 
-Responsive design
+---
 
-Demo
-[Link to live demo or GIF showcasing the project]
+## Project Structure
+```
+VibSense/
+ ├─ app/
+ │   ├─ src/main/java/com/vibsense/
+ │   │   ├─ activities/ …  UI screens & fragments
+ │   │   ├─ firebase/ …    Firebase helpers
+ │   │   ├─ models/ …      Data classes
+ │   │   └─ utils/ …       Reusable utilities
+ │   ├─ res/ …             XML layouts, values, drawables, raw
+ │   └─ build.gradle       Module Gradle script
+ ├─ build.gradle           Project Gradle script
+ └─ settings.gradle        Settings
+```
 
-Installation
-Clone the repository:
+---
 
-bash
-git clone https://github.com/tgaikwad09/electric-string-cursor-tracker.git
-Navigate to the project directory:
+## Getting Started
+### Prerequisites
+* Android Studio Flamingo ± or newer
+* Android SDK 34
+* Java 17
+* A Firebase project (for Auth + Firestore)
 
-bash
-cd electric-string-cursor-tracker
-Open the index.html file in your preferred web browser.
+### 1. Clone & Import
+```bash
+git clone <repo-url>
+cd VibSense
+open -a "Android Studio" .
+```
+Android Studio will sync Gradle automatically.
 
-Usage
-Include the necessary CSS and JavaScript files in your HTML file:
+### 2. Firebase Setup
+1. Create a Firebase project → **Add Android app** with package `com.vibsense.app`.
+2. Download `google-services.json` and place it in `app/`.
+3. In Firebase console, enable **Authentication → Anonymous**.
+4. Enable **Cloud Firestore** (in test mode for quick start).
 
-html
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
-Customize the electric string settings in the script.js file as needed.
+### 3. Build & Run
+Click ▶️ **Run** in Android Studio or execute:
+```bash
+./gradlew installDebug
+```
+Grant **Record Audio** permission when prompted.
 
-Enjoy the interactive electric string cursor tracker on your website!
+### 4. Testing Emotion Detection
+A lightweight placeholder model returns a random emotion if a real model is not bundled. Plug your own TFLite model in `utils/EmotionDetector.kt` by replacing `detectPlaceholder()`.
 
-Contributing
-Contributions are welcome! Please open an issue or create a pull request for suggestions, bug reports, or improvements.
+---
 
-License
-This project is licensed under the MIT License.
+## Customisation
+* **Themes** – switch to light mode in Settings page (not yet implemented).
+* **Quotes** – edit `res/raw/quotes.json` or connect to Firestore collection `quotes`.
+* **Charts** – adjust look & feel in `MoodTrackerFragment`.
 
-Feel free to adjust this template as needed and include any additional information you think is relevant. If you need more help, just let me know!
+---
+
+## License
+MIT
